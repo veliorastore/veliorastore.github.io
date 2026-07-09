@@ -14,204 +14,147 @@
         }
 
         body {
-            background-color: #faf8f5; /* Hafif krem, takıları ön plana çıkaran asil bir renk */
+            background-color: #faf8f5;
             color: #333;
+            line-height: 1.6;
         }
 
         /* Başlık / Logo Alanı */
         header {
             background-color: #ffffff;
             text-align: center;
-            padding: 30px 20px;
+            padding: 40px 20px;
             border-bottom: 1px solid #eaeaea;
-            position: sticky;
-            top: 0;
-            z-index: 100;
         }
 
         header h1 {
             font-size: 2.5rem;
-            font-weight: 300;
-            letter-spacing: 4px;
             color: #111;
+            letter-spacing: 4px;
             text-transform: uppercase;
+            margin-bottom: 5px;
         }
 
         header p {
-            font-size: 0.9rem;
-            color: #888;
-            margin-top: 5px;
-            letter-spacing: 2px;
+            font-size: 1rem;
+            color: #777;
+            font-style: italic;
         }
 
-        /* Vitrin / Kampanya Alanı */
-        .hero {
-            max-width: 1200px;
-            margin: 30px auto;
-            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?q=80&w=1200&auto=format&fit=crop') no-repeat center center/cover;
-            height: 300px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            text-align: center;
-            border-radius: 8px;
-            padding: 20px;
-        }
-
-        .hero h2 {
-            font-size: 2rem;
-            font-weight: 400;
-            margin-bottom: 10px;
-        }
-
-        /* Ürünler Bölümü */
+        /* Ürün Vitrini Alanı */
         .container {
             max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
+            margin: 40px auto;
+            padding: 0 20px;
         }
 
-        .products-grid {
+        .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
-            margin-top: 20px;
         }
 
         /* Ürün Kartı Tasarımı */
-        .product-card {
-            background-color: #fff;
+        .card {
+            background-color: #ffffff;
+            border: 1px solid #eee;
             border-radius: 8px;
             overflow: hidden;
             box-shadow: 0 4px 6px rgba(0,0,0,0.02);
-            transition: transform 0.3s ease;
-            border: 1px solid #f0f0f0;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        .product-card:hover {
+        .card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 15px rgba(0,0,0,0.05);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
         }
 
-        .product-image {
+        .card img {
             width: 100%;
-            height: 280px;
+            height: 350px;
             object-fit: cover;
-            background-color: #f9f9f9;
         }
 
-        .product-info {
+        .card-info {
             padding: 20px;
             text-align: center;
         }
 
-        .product-title {
-            font-size: 1.1rem;
-            font-weight: 500;
+        .card-info h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
             color: #222;
-            margin-bottom: 8px;
         }
 
-        .product-price {
-            font-size: 1.2rem;
-            color: #b18956; /* Takı sitelerine yakışan gold/bronz tonu */
-            font-weight: bold;
+        .card-info p {
+            font-size: 0.95rem;
+            color: #666;
             margin-bottom: 15px;
         }
 
-        /* Satın Alma Butonu (WhatsApp) */
-        .buy-button {
-            display: inline-block;
-            width: 100%;
-            background-color: #25D366; /* WhatsApp Yeşili */
-            color: white;
-            text-align: center;
-            padding: 12px;
-            text-decoration: none;
-            border-radius: 6px;
-            font-weight: 600;
-            transition: background-color 0.2s;
+        .price {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #b18b5e;
         }
 
-        .buy-button:hover {
-            background-color: #128C7E;
-        }
-
-        /* Sayfa Altı */
+        /* Alt Bilgi / Footer */
         footer {
+            background-color: #111;
+            color: #fff;
             text-align: center;
-            padding: 40px 20px;
-            margin-top: 5px;
-            background-color: #fff;
-            color: #777;
+            padding: 30px 20px;
+            margin-top: 60px;
             font-size: 0.9rem;
-            border-top: 1px solid #eaeaea;
+        }
+
+        footer p {
+            color: #aaa;
         }
     </style>
 </head>
 <body>
 
-    <!-- Başlık Bölümü -->
     <header>
         <h1>Veliora</h1>
-        <p>ZARAFETİN DETAYLARDAKİ YANSIMASI</p>
+        <p>Zarafetin ve şıklığın modern tasarımlarla buluştuğu nokta</p>
     </header>
 
-    <!-- Öne Çıkan Görsel / Karşılama -->
     <div class="container">
-        <div class="hero">
-            <h2>Yeni Sezon Takı Koleksiyonu</h2>
-            <p>Işıltınızı tamamlayacak en özel tasarımlar kapınızda.</p>
-        </div>
-    </div>
-
-    <!-- Ürün Listesi -->
-    <div class="container">
-        <div class="products-grid">
-
-            <!-- ÜRÜN 1 -->
-            <div class="product-card">
-                <img src=  <img src="https://i.hizliresim.com/19kxgmq.jpeg">alt="Zarif İncili Altın Kaplama Kolye" class="product-image">
-                <div class="product-info">
-                    <div class="product-title">saat</div>
-                    <div class="product-price">1200 TL</div>
-                    <a href="https://wa.me/905435516565?text=Merhaba%20Veliora,%20Zarif%20Inceli%20Altin%20Kaplama%20Kolye%20urununu%20siparis%20etmek%20istiyorum." target="_blank" class="buy-button">WhatsApp ile Sipariş Ver</a>
+        <div class="grid">
+            
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?q=80&w=600" alt="Zarif Altın Kolye">
+                <div class="card-info">
+                    <h3>Zarif Altın Kolye</h3>
+                    <p>İnce işçilikle tasarlanmış, her anınıza ışıltı katacak özel tasarım zincir kolye.</p>
+                    <span class="price">1.250 TL</span>
                 </div>
             </div>
 
-            <!-- ÜRÜN 2 -->
-            <div class="product-card">
-                <img src=⁠https://hizliresim.com/19kxgmq
- alt="Minimalist Baget Kesim Yüzük" class="product-image">
-                <div class="product-info">
-                    <div class="product-title">Gözlük</div>
-                    <div class="product-price">1300 TL</div>
-                    <a href="https://wa.me/905435516565?text=Merhaba%20Veliora,%20Minimalist%20Baget%20Kesim%20Yuzuk%20urununu%20siparis%20etmek%20istiyorum." target="_blank" class="buy-button">WhatsApp ile Sipariş Ver</a>
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?q=80&w=600" alt="Gümüş Minimal Küpe">
+                <div class="card-info">
+                    <h3>Gümüş Minimal Küpe</h3>
+                    <p>Günlük şıklığınızı tamamlayacak, hafif ve modern hatlara sahip gümüş küpe.</p>
+                    <span class="price">650 TL</span>
                 </div>
             </div>
 
-            <!-- ÜRÜN 3 -->
-            <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1635767798638-3e25273a8236?q=80&w=500&auto=format&fit=crop" alt="925 Ayar Gümüş Halka Küpe" class="product-image">
-                <div class="product-info">
-                    <div class="product-title">çanta</div>
-                    <div class="product-price">2199TL</div>
-                    <a href="https://wa.me/905435516565?text=Merhaba%20Veliora,%20925%20Ayar%20Gumus%20Halka%20Kupe%20urununu%20siparis%20etmek%20istiyorum." target="_blank" class="buy-button">WhatsApp ile Sipariş Ver</a>
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?q=80&w=600" alt="Doğal Taşlı Yüzük">
+                <div class="card-info">
+                    <h3>Doğal Taşlı Siyah Yüzük</h3>
+                    <p>Özel akik taşı detaylı, gücü ve asaleti simgeleyen ayarlanabilir yüzük.</p>
+                    <span class="price">890 TL</span>
                 </div>
             </div>
 
         </div>
     </div>
 
-    <!-- Sayfa Alt Bilgisi -->
     <footer>
-        <p>&copy; 2026 Veliora. Tüm Hakları Saklıdır.</p>
-        <p style="font-size: 0.8rem; margin-top: 10px; color: #bbb;">WhatsApp Sipariş Hattı: +90 (543) 551 65 65</p>
+        <p>&copy; 2026 Veliora Store. Tüm Hakları Saklıdır.</p>
     </footer>
 
 </body>
