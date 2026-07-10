@@ -78,13 +78,12 @@
             align-items: center;
             gap: 18px;
         }
-        .header-right button, .header-right a {
+        .header-right button {
             background: none;
             border: none;
             font-size: 1.2rem;
             cursor: pointer;
             color: #000;
-            text-decoration: none;
             position: relative;
         }
         .cart-count { 
@@ -103,6 +102,64 @@
             font-weight: bold; 
         }
 
+        /* Yandan Açılan Menü (YENİ EKLENDİ) */
+        .menu-panel {
+            position: fixed;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            max-width: 400px;
+            height: 100%;
+            background: #fff;
+            z-index: 250;
+            box-shadow: 5px 0 25px rgba(0,0,0,0.1);
+            transition: left 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+        }
+        .menu-panel.open { left: 0; }
+        .menu-header {
+            display: flex;
+            justify-content: flex-start;
+            margin-bottom: 40px;
+        }
+        .close-menu {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #000;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #f5f5f5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .menu-links {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+        .menu-links a {
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: #000;
+            text-decoration: none;
+            letter-spacing: 1px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 5px;
+        }
+        .menu-links a i {
+            font-size: 0.9rem;
+            color: #888;
+        }
+
         /* Hero */
         .hero { padding: 40px 20px; text-align: center; background: #fff; margin-bottom: 30px; border-bottom: 1px solid #f0f0f0; }
         .hero h2 { font-size: 1.8rem; font-weight: 300; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px; }
@@ -115,7 +172,6 @@
         .image-container { position: relative; width: 100%; height: 400px; background: #f7f7f7; }
         .card img { width: 100%; height: 100%; object-fit: cover; }
         
-        /* Badgeler (Yeni Ürün / İndirim) */
         .badge {
             position: absolute;
             bottom: 15px;
@@ -165,13 +221,15 @@
 </head>
 <body>
 
+    <!-- Üst Duyuru Bandı -->
     <div class="announcement-bar">
         %50'ye Varan İndirim | <a href="#">Hemen Keşfet</a>
     </div>
 
+    <!-- Header / Navbar -->
     <header>
         <div class="header-left">
-            <button><i class="fa-solid fa-bars"></i></button>
+            <button onclick="toggleMenu(true)"><i class="fa-solid fa-bars"></i></button>
             <button><i class="fa-solid fa-magnifying-glass"></i></button>
         </div>
         
@@ -188,14 +246,32 @@
         </div>
     </header>
 
+    <!-- Yandan Açılan Kategori Menüsü -->
+    <div class="overlay" id="menu-overlay" onclick="toggleMenu(false)"></div>
+    <div class="menu-panel" id="menu-panel">
+        <div class="menu-header">
+            <button class="close-menu" onclick="toggleMenu(false)"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="menu-links">
+            <a href="#">Kadın <i class="fa-solid fa-chevron-right"></i></a>
+            <a href="#">Erkek <i class="fa-solid fa-chevron-right"></i></a>
+            <a href="#">Koleksiyonlar <i class="fa-solid fa-chevron-right"></i></a>
+            <a href="#">Kılıf & Aksesuar</a>
+            <a href="#">İndirimli Ürünler</a>
+        </div>
+    </div>
+
+    <!-- Hero Showcase -->
     <div class="hero">
         <h2>Premium Gözlük Koleksiyonu</h2>
         <p>Tarzınızı tamamlayan ikonik detaylar ve üst düzey kalitede tasarımlar.</p>
     </div>
 
+    <!-- Ürünler Vitrini -->
     <div class="container">
         <div class="grid">
             
+            <!-- Ürün 1 -->
             <div class="card">
                 <div class="image-container">
                     <img src="https://images.unsplash.com/photo-1511499767150-a48a237f0083?q=80&w=600" alt="Veliora Dark Bold">
@@ -212,6 +288,7 @@
                 </div>
             </div>
 
+            <!-- Ürün 2 -->
             <div class="card">
                 <div class="image-container">
                     <img src="https://images.unsplash.com/photo-1572635196237-14b3f281503f?q=80&w=600" alt="Veliora Retro Gold">
@@ -228,6 +305,7 @@
                 </div>
             </div>
 
+            <!-- Ürün 3 -->
             <div class="card">
                 <div class="image-container">
                     <img src="https://images.unsplash.com/photo-1591076482161-42ce6da69f67?q=80&w=600" alt="Veliora Urban Cyber">
@@ -247,6 +325,7 @@
         </div>
     </div>
 
+    <!-- Sepet Paneli -->
     <div class="overlay" id="overlay" onclick="toggleCart(false)"></div>
     <div class="cart-panel" id="cart-panel">
         <div class="cart-header">
@@ -267,10 +346,25 @@
         </div>
     </div>
 
+    <!-- Sepet ve Menü Mantığı Script -->
     <script>
         let cart = [];
         const whatsappNumber = "905435516565";
 
+        // Yandan Açılır Menü Fonksiyonu (YENİ)
+        function toggleMenu(open) {
+            const panel = document.getElementById('menu-panel');
+            const overlay = document.getElementById('menu-overlay');
+            if(open) {
+                panel.classList.add('open');
+                overlay.classList.add('open');
+            } else {
+                panel.classList.remove('open');
+                overlay.classList.remove('open');
+            }
+        }
+
+        // Sepet Fonksiyonları
         function toggleCart(open) {
             const panel = document.getElementById('cart-panel');
             const overlay = document.getElementById('overlay');
