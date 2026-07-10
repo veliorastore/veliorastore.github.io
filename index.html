@@ -1,181 +1,243 @@
-
 <!DOCTYPE html>
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Veliora | Premium Gözlük Koleksiyonu</title>
+    <title>Veliora | Premium Sunglasses</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        body { background-color: #faf8f5; color: #333; line-height: 1.6; padding-bottom: 100px; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: '-apple-system', BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
+        body { background-color: #fcfbfa; color: #1a1a1a; padding-bottom: 60px; }
         
-        header { background-color: #ffffff; text-align: center; padding: 30px 20px; border-bottom: 1px solid #eaeaea; }
-        header h1 { font-size: 2.5rem; color: #111; letter-spacing: 6px; text-transform: uppercase; }
-        header p { font-size: 1rem; color: #777; font-style: italic; margin-top: 5px; }
+        /* Header & Nav */
+        header { background: #fff; border-bottom: 1px solid #eaeaea; position: sticky; top: 0; z-index: 100; padding: 15px 25px; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.8rem; font-weight: 800; letter-spacing: 4px; text-transform: uppercase; color: #000; }
+        .cart-icon-btn { background: none; border: none; font-size: 1.4rem; cursor: pointer; position: relative; color: #000; padding: 5px; }
+        .cart-count { position: absolute; top: -5px; right: -5px; background: #000; color: #fff; font-size: 0.75rem; width: 18px; height: 18px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; }
 
-        .hero { background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1511499767150-a48a237f0083?q=80&w=1200') no-repeat center center/cover; height: 350px; display: flex; flex-direction: column; justify-content: center; align-items: center; color: white; text-align: center; padding: 20px; }
-        .hero h2 { font-size: 2.2rem; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 10px; }
-        .hero p { font-size: 1.1rem; max-width: 600px; font-weight: 300; }
+        /* Hero */
+        .hero { padding: 50px 20px; text-align: center; background: #fff; margin-bottom: 30px; border-bottom: 1px solid #f0f0f0; }
+        .hero h2 { font-size: 2.2rem; font-weight: 300; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px; }
+        .hero p { color: #666; font-size: 1rem; max-width: 600px; margin: 0 auto; line-height: 1.6; }
 
-        .container { max-width: 1200px; margin: 40px auto; padding: 0 20px; }
-
-        .categories { display: flex; justify-content: center; gap: 15px; margin-bottom: 40px; flex-wrap: wrap; }
-        .cat-btn { background-color: #fff; border: 1px solid #ddd; padding: 10px 25px; border-radius: 30px; cursor: pointer; font-weight: bold; transition: all 0.3s; font-size: 0.9rem; }
-        .cat-btn.active, .cat-btn:hover { background-color: #111; color: #fff; border-color: #111; }
-
+        /* Product Grid */
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
-        .card { background-color: #ffffff; border: 1px solid #eee; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.02); transition: transform 0.3s, box-shadow 0.3s; display: flex; flex-direction: column; justify-content: space-between; position: relative; }
-        .card:hover { transform: translateY(-5px); box-shadow: 0 12px 25px rgba(0,0,0,0.08); }
-        .card img { width: 100%; height: 320px; object-fit: cover; }
-        
-        .badge { position: absolute; top: 15px; left: 15px; background-color: #d9534f; color: white; padding: 5px 10px; font-size: 0.75rem; font-weight: bold; border-radius: 4px; text-transform: uppercase; }
+        .card { background: #fff; border: 1px solid #eee; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.01); transition: transform 0.2s ease; display: flex; flex-direction: column; }
+        .card:hover { transform: translateY(-4px); }
+        .image-container { position: relative; width: 100%; height: 350px; background: #f7f7f7; }
+        .card img { width: 100%; height: 100%; object-fit: cover; }
+        .card-info { padding: 20px; display: flex; flex-direction: column; flex-grow: 1; justify-content: space-between; }
+        .card-info h3 { font-size: 1.15rem; font-weight: 600; color: #111; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .price { font-size: 1.25rem; font-weight: 700; color: #000; margin-bottom: 15px; display: block; }
+        .btn-add { background: #000; color: #fff; border: none; width: 100%; padding: 12px; border-radius: 10px; font-weight: 600; font-size: 0.95rem; cursor: pointer; transition: background 0.2s; display: flex; align-items: center; justify-content: center; gap: 8px; }
+        .btn-add:hover { background: #222; }
 
-        .card-info { padding: 20px; text-align: center; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; }
-        .card-info h3 { font-size: 1.15rem; margin-bottom: 8px; color: #222; }
-        .card-info p { font-size: 0.85rem; color: #666; margin-bottom: 15px; height: 40px; overflow: hidden; }
-        .price { font-size: 1.2rem; font-weight: bold; color: #b18b5e; display: block; margin-bottom: 15px; }
-        
-        .btn-add { display: block; width: 100%; background-color: #111; color: white; border: none; padding: 12px; border-radius: 6px; font-weight: bold; font-size: 0.9rem; cursor: pointer; transition: background 0.3s; }
-        .btn-add:hover { background-color: #444; }
+        /* Sidebar Cart Panel */
+        .cart-panel { position: fixed; top: 0; right: -100%; width: 100%; max-width: 400px; height: 100%; background: #fff; z-index: 200; box-shadow: -5px 0 25px rgba(0,0,0,0.1); transition: right 0.3s ease; display: flex; flex-direction: column; }
+        .cart-panel.open { right: 0; }
+        .cart-header { padding: 20px; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; background: #fff; }
+        .cart-header h2 { font-size: 1.3rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+        .close-cart { background: none; border: none; font-size: 1.4rem; cursor: pointer; color: #000; }
+        .cart-items { flex-grow: 1; overflow-y: auto; padding: 20px; }
+        .cart-item { display: flex; align-items: center; gap: 15px; padding-bottom: 15px; margin-bottom: 15px; border-bottom: 1px solid #f5f5f5; }
+        .cart-item img { width: 70px; height: 70px; object-fit: cover; border-radius: 8px; background: #f7f7f7; }
+        .item-details { flex-grow: 1; }
+        .item-details h4 { font-size: 0.95rem; font-weight: 600; margin-bottom: 4px; text-transform: uppercase; }
+        .item-details .item-price { font-size: 0.95rem; font-weight: 700; color: #000; }
+        .item-qty { font-size: 0.85rem; color: #666; margin-top: 2px; }
+        .remove-item { background: none; border: none; color: #ff3b30; cursor: pointer; font-size: 0.9rem; padding: 5px; }
+        .cart-footer { padding: 20px; border-top: 1px solid #eee; background: #fafafa; }
+        .total-box { display: flex; justify-content: space-between; font-size: 1.2rem; font-weight: 700; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .btn-order { background: #25D366; color: #fff; border: none; width: 100%; padding: 15px; border-radius: 12px; font-weight: 700; font-size: 1.05rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; text-decoration: none; box-shadow: 0 4px 12px rgba(37, 211, 102, 0.2); transition: background 0.2s; }
+        .btn-order:hover { background: #20ba59; }
+        .empty-msg { text-align: center; color: #888; margin-top: 40px; font-size: 1rem; }
 
-        .cart-bar { position: fixed; bottom: 20px; right: 20px; left: 20px; max-width: 400px; margin: 0 auto; background-color: #ffffff; box-shadow: 0 -5px 25px rgba(0,0,0,0.15); border-radius: 12px; padding: 15px 20px; display: none; z-index: 9999; border: 1px solid #eee; }
-        .cart-content { display: flex; justify-content: space-between; align-items: center; }
-        .cart-text { font-weight: bold; font-size: 1rem; }
-        .btn-order { background-color: #25D366; color: white; text-decoration: none; padding: 10px 20px; border-radius: 6px; font-weight: bold; font-size: 0.9rem; transition: background 0.3s; display: flex; align-items: center; gap: 8px; }
-        .btn-order:hover { background-color: #128C7E; }
-
-        footer { background-color: #111; color: #fff; text-align: center; padding: 40px 20px; margin-top: 80px; font-size: 0.9rem; }
+        /* Overlay */
+        .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.4); z-index: 150; display: none; }
+        .overlay.open { display: block; }
     </style>
 </head>
 <body>
 
+    <!-- Header / Navbar -->
     <header>
-        <h1>Veliora</h1>
-        <p>Göz Alıcı Detaylar, Benzersiz Tasarımlar</p>
+        <div class="logo">Veliora</div>
+        <button class="cart-icon-btn" onclick="toggleCart(true)">
+            <i class="fa-solid fa-bag-shopping"></i>
+            <span class="cart-count" id="cart-count">0</span>
+        </button>
     </header>
 
+    <!-- Hero Showcase -->
     <div class="hero">
-        <h2>Tarzını Odak Noktası Yap</h2>
-        <p>Premium koruma ve lüks tasarımlara sahip yeni sezon gözlük koleksiyonumuzu keşfedin.</p>
+        <h2>Premium Gözlük Koleksiyonu</h2>
+        <p>Tarzınızı tamamlayan ikonik detaylar ve üst düzey kalitede tasarımlar.</p>
     </div>
 
+    <!-- Ürünler Vitrini -->
     <div class="container">
-        <div class="categories">
-            <button class="cat-btn active" onclick="filtrele('Hepsi')">Tüm Modeller</button>
-            <button class="cat-btn" onclick="filtrele('Güneş')">Güneş Gözlükleri</button>
-            <button class="cat-btn" onclick="filtrele('Kemik')">Kemik Çerçeve</button>
-            <button class="cat-btn" onclick="filtrele('Metal')">Metal Çerçeve</button>
-        </div>
-
-        <div class="grid" id="urun-kutusu"></div>
-    </div>
-
-    <div class="cart-bar" id="sepet-bari">
-        <div class="cart-content">
-            <div class="cart-text">Sepetinizde <span id="sepet-adet">0</span> ürün var</div>
-            <a href="#" id="whatsapp-link" target="_blank" class="btn-order">Siparişi Tamamla (WA)</a>
-        </div>
-    </div>
-
-    <footer>
-        <p>&copy; 2026 Veliora Store. Tüm Hakları Saklıdır.</p>
-    </footer>
-
-    <script>
-        const urunler = [
-            {
-                id: 1,
-                ad: "Retro Güneş Gözlüğü",
-                kategori: "Güneş",
-                aciklama: "90'lar esintili, UV400 korumalı şık leopar desenli gözlük.",
-                fiyat: 850,
-                resim: "https://images.unsplash.com/photo-1511499767150-a48a237f0083?q=80&w=600",
-                stokAz: true
-            },
-            {
-                id: 2,
-                ad: "Black Aviator",
-                kategori: "Metal",
-                aciklama: "Klasik damla model, siyah camlı ve metal çerçeveli cool tasarım.",
-                fiyat: 950,
-                resim: "https://images.unsplash.com/photo-1572635196237-14b3f281503f?q=80&w=600",
-                stokAz: false
-            },
-            {
-                id: 3,
-                ad: "Vogue Kemik Gözlük",
-                kategori: "Kemik",
-                aciklama: "Yüz hatlarını ortaya çıkaran kalın siyah asetat çerçeve.",
-                fiyat: 790,
-                resim: "https://images.unsplash.com/photo-1508296695146-257a814070b4?q=80&w=600",
-                stokAz: true
-            }
-        ];
-
-        let sepet = {};
-
-        function urunleriBas(kategoriAdi = 'Hepsi') {
-            const kutu = document.getElementById('urun-kutusu');
-            kutu.innerHTML = '';
+        <div class="grid">
             
-            const filtrelenmiş = kategoriAdi === 'Hepsi' ? urunler : urunler.filter(u => u.kategori === kategoriAdi);
-
-            filtrelenmiş.forEach(urun => {
-                kutu.innerHTML += `
-                    <div class="card">
-                        ${urun.stokAz ? '<div class="badge">SON 3 ÜRÜN</div>' : ''}
-                        <img src="${urun.resim}" alt="${urun.ad}">
-                        <div class="card-info">
-                            <div>
-                                <h3>${urun.ad}</h3>
-                                <p>${urun.aciklama}</p>
-                            </div>
-                            <div>
-                                <span class="price">${urun.fiyat} TL</span>
-                                <button class="btn-add" onclick="sepeteEkle(${urun.id})">Sepete Ekle</button>
-                            </div>
-                        </div>
+            <!-- Ürün 1 -->
+            <div class="card">
+                <div class="image-container">
+                    <img src="https://images.unsplash.com/photo-1511499767150-a48a237f0083?q=80&w=600" alt="Veliora Dark Bold">
+                </div>
+                <div class="card-info">
+                    <div>
+                        <h3>Veliora Dark Bold</h3>
+                        <span class="price">890 TL</span>
                     </div>
-                `;
-            });
-        }
+                    <button class="btn-add" onclick="addToCart(1, 'Veliora Dark Bold', 890, 'https://images.unsplash.com/photo-1511499767150-a48a237f0083?q=80&w=600')">
+                        <i class="fa-solid fa-plus"></i> Sepete Ekle
+                    </button>
+                </div>
+            </div>
 
-        function filtrele(kat) {
-            document.querySelectorAll('.cat-btn').forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
-            urunleriBas(kat);
-        }
+            <!-- Ürün 2 -->
+            <div class="card">
+                <div class="image-container">
+                    <img src="https://images.unsplash.com/photo-1572635196237-14b3f281503f?q=80&w=600" alt="Veliora Retro Gold">
+                </div>
+                <div class="card-info">
+                    <div>
+                        <h3>Veliora Retro Gold</h3>
+                        <span class="price">1.150 TL</span>
+                    </div>
+                    <button class="btn-add" onclick="addToCart(2, 'Veliora Retro Gold', 1150, 'https://images.unsplash.com/photo-1572635196237-14b3f281503f?q=80&w=600')">
+                        <i class="fa-solid fa-plus"></i> Sepete Ekle
+                    </button>
+                </div>
+            </div>
 
-        function sepeteEkle(id) {
-            sepet[id] = (sepet[id] || 0) + 1;
-            sepetiGuncelle();
-        }
+            <!-- Ürün 3 -->
+            <div class="card">
+                <div class="image-container">
+                    <img src="https://images.unsplash.com/photo-1591076482161-42ce6da69f67?q=80&w=600" alt="Veliora Urban Cyber">
+                </div>
+                <div class="card-info">
+                    <div>
+                        <h3>Veliora Urban Cyber</h3>
+                        <span class="price">950 TL</span>
+                    </div>
+                    <button class="btn-add" onclick="addToCart(3, 'Veliora Urban Cyber', 950, 'https://images.unsplash.com/photo-1591076482161-42ce6da69f67?q=80&w=600')">
+                        <i class="fa-solid fa-plus"></i> Sepete Ekle
+                    </button>
+                </div>
+            </div>
 
-        function sepetiGuncelle() {
-            const bar = document.getElementById('sepet-bari');
-            const adetSpan = document.getElementById('sepet-adet');
-            const waLink = document.getElementById('whatsapp-link');
-            
-            let toplamAdet = 0;
-            let mesajMetni = "Merhaba Veliora, sitemizden şu ürünleri sipariş etmek istiyorum:\n\n";
+        </div>
+    </div>
 
-            for (let id in sepet) {
-                const urun = urunler.find(u => u.id == id);
-                toplamAdet += sepet[id];
-                mesajMetni += `- ${sepet[id]} adet [${urun.ad}] (${urun.fiyat * sepet[id]} TL)\n`;
-            }
+    <!-- Sepet Paneli (Açılır Menü) -->
+    <div class="overlay" id="overlay" onclick="toggleCart(false)"></div>
+    <div class="cart-panel" id="cart-panel">
+        <div class="cart-header">
+            <h2>Sepetim</h2>
+            <button class="close-cart" onclick="toggleCart(false)"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        
+        <div class="cart-items" id="cart-items-container">
+            <!-- Dinamik Ürünler Buraya Gelecek -->
+        </div>
 
-            if (toplamAdet > 0) {
-                bar.style.display = 'block';
-                adetSpan.innerText = toplamAdet;
-                // Kendi telefon numaranı buraya girmeyi unutma kanka (Örn: 905321234567)
-                waLink.href = `https://wa.me/905000000000?text=${encodeURIComponent(mesajMetni)}`;
+        <div class="cart-footer">
+            <div class="total-box">
+                <span>Toplam:</span>
+                <span id="cart-total">0 TL</span>
+            </div>
+            <a href="#" id="whatsapp-btn" target="_blank" class="btn-order">
+                <i class="fa-brands fa-whatsapp"></i> WhatsApp ile Sipariş Ver
+            </a>
+        </div>
+    </div>
+
+    <!-- Sepet Mantığı Script -->
+    <script>
+        let cart = [];
+        const whatsappNumber = "905435516565";
+
+        function toggleCart(open) {
+            const panel = document.getElementById('cart-panel');
+            const overlay = document.getElementById('overlay');
+            if(open) {
+                panel.classList.add('open');
+                overlay.classList.add('open');
             } else {
-                bar.style.display = 'none';
+                panel.classList.remove('open');
+                overlay.classList.remove('open');
             }
         }
 
-        urunleriBas();
+        function addToCart(id, name, price, img) {
+            const existingItem = cart.find(item => item.id === id);
+            if(existingItem) {
+                existingItem.qty += 1;
+            } else {
+                cart.push({ id, name, price, img, qty: 1 });
+            }
+            updateCartUI();
+            toggleCart(true);
+        }
+
+        function removeFromCart(id) {
+            cart = cart.filter(item => item.id !== id);
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            const container = document.getElementById('cart-items-container');
+            const countSpan = document.getElementById('cart-count');
+            const totalSpan = document.getElementById('cart-total');
+            const whatsappBtn = document.getElementById('whatsapp-btn');
+            
+            container.innerHTML = "";
+            
+            if(cart.length === 0) {
+                container.innerHTML = '<div class="empty-msg">Sepetiniz şu an boş.</div>';
+                countSpan.innerText = "0";
+                totalSpan.innerText = "0 TL";
+                whatsappBtn.style.display = "none";
+                return;
+            } else {
+                whatsappBtn.style.display = "flex";
+            }
+
+            let total = 0;
+            let totalQty = 0;
+            let messageText = "Merhaba Veliora, sitemizden şu ürünleri sipariş etmek istiyorum:\n\n";
+
+            cart.forEach(item => {
+                total += (item.price * item.qty);
+                totalQty += item.qty;
+                messageText += `• ${item.name} (${item.qty} Adet) - ${item.price * item.qty} TL\n`;
+
+                const itemEl = document.createElement('div');
+                itemEl.classList.add('cart-item');
+                itemEl.innerHTML = `
+                    <img src="${item.img}" alt="${item.name}">
+                    <div class="item-details">
+                        <h4>${item.name}</h4>
+                        <div class="item-price">${item.price} TL</div>
+                        <div class="item-qty">Adet: ${item.qty}</div>
+                    </div>
+                    <button class="remove-item" onclick="removeFromCart(${item.id})"><i class="fa-regular fa-trash-can"></i></button>
+                `;
+                container.appendChild(itemEl);
+            });
+
+            messageText += `\n**Toplam Tutar:** ${total} TL`;
+            
+            countSpan.innerText = totalQty;
+            totalSpan.innerText = total.toLocaleString('tr-TR') + " TL";
+            
+            // WhatsApp Link Güncelleme
+            whatsappBtn.href = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(messageText)}`;
+        }
+
+        // İlk yüklemede butonu gizle
+        updateCartUI();
     </script>
 </body>
 </html>
