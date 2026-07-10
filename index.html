@@ -1,1 +1,181 @@
 
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Veliora | Premium Gözlük Koleksiyonu</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: #faf8f5; color: #333; line-height: 1.6; padding-bottom: 100px; }
+        
+        header { background-color: #ffffff; text-align: center; padding: 30px 20px; border-bottom: 1px solid #eaeaea; }
+        header h1 { font-size: 2.5rem; color: #111; letter-spacing: 6px; text-transform: uppercase; }
+        header p { font-size: 1rem; color: #777; font-style: italic; margin-top: 5px; }
+
+        .hero { background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1511499767150-a48a237f0083?q=80&w=1200') no-repeat center center/cover; height: 350px; display: flex; flex-direction: column; justify-content: center; align-items: center; color: white; text-align: center; padding: 20px; }
+        .hero h2 { font-size: 2.2rem; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 10px; }
+        .hero p { font-size: 1.1rem; max-width: 600px; font-weight: 300; }
+
+        .container { max-width: 1200px; margin: 40px auto; padding: 0 20px; }
+
+        .categories { display: flex; justify-content: center; gap: 15px; margin-bottom: 40px; flex-wrap: wrap; }
+        .cat-btn { background-color: #fff; border: 1px solid #ddd; padding: 10px 25px; border-radius: 30px; cursor: pointer; font-weight: bold; transition: all 0.3s; font-size: 0.9rem; }
+        .cat-btn.active, .cat-btn:hover { background-color: #111; color: #fff; border-color: #111; }
+
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+        .card { background-color: #ffffff; border: 1px solid #eee; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.02); transition: transform 0.3s, box-shadow 0.3s; display: flex; flex-direction: column; justify-content: space-between; position: relative; }
+        .card:hover { transform: translateY(-5px); box-shadow: 0 12px 25px rgba(0,0,0,0.08); }
+        .card img { width: 100%; height: 320px; object-fit: cover; }
+        
+        .badge { position: absolute; top: 15px; left: 15px; background-color: #d9534f; color: white; padding: 5px 10px; font-size: 0.75rem; font-weight: bold; border-radius: 4px; text-transform: uppercase; }
+
+        .card-info { padding: 20px; text-align: center; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; }
+        .card-info h3 { font-size: 1.15rem; margin-bottom: 8px; color: #222; }
+        .card-info p { font-size: 0.85rem; color: #666; margin-bottom: 15px; height: 40px; overflow: hidden; }
+        .price { font-size: 1.2rem; font-weight: bold; color: #b18b5e; display: block; margin-bottom: 15px; }
+        
+        .btn-add { display: block; width: 100%; background-color: #111; color: white; border: none; padding: 12px; border-radius: 6px; font-weight: bold; font-size: 0.9rem; cursor: pointer; transition: background 0.3s; }
+        .btn-add:hover { background-color: #444; }
+
+        .cart-bar { position: fixed; bottom: 20px; right: 20px; left: 20px; max-width: 400px; margin: 0 auto; background-color: #ffffff; box-shadow: 0 -5px 25px rgba(0,0,0,0.15); border-radius: 12px; padding: 15px 20px; display: none; z-index: 9999; border: 1px solid #eee; }
+        .cart-content { display: flex; justify-content: space-between; align-items: center; }
+        .cart-text { font-weight: bold; font-size: 1rem; }
+        .btn-order { background-color: #25D366; color: white; text-decoration: none; padding: 10px 20px; border-radius: 6px; font-weight: bold; font-size: 0.9rem; transition: background 0.3s; display: flex; align-items: center; gap: 8px; }
+        .btn-order:hover { background-color: #128C7E; }
+
+        footer { background-color: #111; color: #fff; text-align: center; padding: 40px 20px; margin-top: 80px; font-size: 0.9rem; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Veliora</h1>
+        <p>Göz Alıcı Detaylar, Benzersiz Tasarımlar</p>
+    </header>
+
+    <div class="hero">
+        <h2>Tarzını Odak Noktası Yap</h2>
+        <p>Premium koruma ve lüks tasarımlara sahip yeni sezon gözlük koleksiyonumuzu keşfedin.</p>
+    </div>
+
+    <div class="container">
+        <div class="categories">
+            <button class="cat-btn active" onclick="filtrele('Hepsi')">Tüm Modeller</button>
+            <button class="cat-btn" onclick="filtrele('Güneş')">Güneş Gözlükleri</button>
+            <button class="cat-btn" onclick="filtrele('Kemik')">Kemik Çerçeve</button>
+            <button class="cat-btn" onclick="filtrele('Metal')">Metal Çerçeve</button>
+        </div>
+
+        <div class="grid" id="urun-kutusu"></div>
+    </div>
+
+    <div class="cart-bar" id="sepet-bari">
+        <div class="cart-content">
+            <div class="cart-text">Sepetinizde <span id="sepet-adet">0</span> ürün var</div>
+            <a href="#" id="whatsapp-link" target="_blank" class="btn-order">Siparişi Tamamla (WA)</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Veliora Store. Tüm Hakları Saklıdır.</p>
+    </footer>
+
+    <script>
+        const urunler = [
+            {
+                id: 1,
+                ad: "Retro Güneş Gözlüğü",
+                kategori: "Güneş",
+                aciklama: "90'lar esintili, UV400 korumalı şık leopar desenli gözlük.",
+                fiyat: 850,
+                resim: "https://images.unsplash.com/photo-1511499767150-a48a237f0083?q=80&w=600",
+                stokAz: true
+            },
+            {
+                id: 2,
+                ad: "Black Aviator",
+                kategori: "Metal",
+                aciklama: "Klasik damla model, siyah camlı ve metal çerçeveli cool tasarım.",
+                fiyat: 950,
+                resim: "https://images.unsplash.com/photo-1572635196237-14b3f281503f?q=80&w=600",
+                stokAz: false
+            },
+            {
+                id: 3,
+                ad: "Vogue Kemik Gözlük",
+                kategori: "Kemik",
+                aciklama: "Yüz hatlarını ortaya çıkaran kalın siyah asetat çerçeve.",
+                fiyat: 790,
+                resim: "https://images.unsplash.com/photo-1508296695146-257a814070b4?q=80&w=600",
+                stokAz: true
+            }
+        ];
+
+        let sepet = {};
+
+        function urunleriBas(kategoriAdi = 'Hepsi') {
+            const kutu = document.getElementById('urun-kutusu');
+            kutu.innerHTML = '';
+            
+            const filtrelenmiş = kategoriAdi === 'Hepsi' ? urunler : urunler.filter(u => u.kategori === kategoriAdi);
+
+            filtrelenmiş.forEach(urun => {
+                kutu.innerHTML += `
+                    <div class="card">
+                        ${urun.stokAz ? '<div class="badge">SON 3 ÜRÜN</div>' : ''}
+                        <img src="${urun.resim}" alt="${urun.ad}">
+                        <div class="card-info">
+                            <div>
+                                <h3>${urun.ad}</h3>
+                                <p>${urun.aciklama}</p>
+                            </div>
+                            <div>
+                                <span class="price">${urun.fiyat} TL</span>
+                                <button class="btn-add" onclick="sepeteEkle(${urun.id})">Sepete Ekle</button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        function filtrele(kat) {
+            document.querySelectorAll('.cat-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            urunleriBas(kat);
+        }
+
+        function sepeteEkle(id) {
+            sepet[id] = (sepet[id] || 0) + 1;
+            sepetiGuncelle();
+        }
+
+        function sepetiGuncelle() {
+            const bar = document.getElementById('sepet-bari');
+            const adetSpan = document.getElementById('sepet-adet');
+            const waLink = document.getElementById('whatsapp-link');
+            
+            let toplamAdet = 0;
+            let mesajMetni = "Merhaba Veliora, sitemizden şu ürünleri sipariş etmek istiyorum:\n\n";
+
+            for (let id in sepet) {
+                const urun = urunler.find(u => u.id == id);
+                toplamAdet += sepet[id];
+                mesajMetni += `- ${sepet[id]} adet [${urun.ad}] (${urun.fiyat * sepet[id]} TL)\n`;
+            }
+
+            if (toplamAdet > 0) {
+                bar.style.display = 'block';
+                adetSpan.innerText = toplamAdet;
+                // Kendi telefon numaranı buraya girmeyi unutma kanka (Örn: 905321234567)
+                waLink.href = `https://wa.me/905000000000?text=${encodeURIComponent(mesajMetni)}`;
+            } else {
+                bar.style.display = 'none';
+            }
+        }
+
+        urunleriBas();
+    </script>
+</body>
+</html>
