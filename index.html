@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VELIORA | Timeless Vision</title>
-    <!-- Fontlar: Cormorant Garamond & Inter -->
+    <title>VELIORA | Premium Eyewear & Watches</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -16,7 +15,8 @@
             --card-bg: #F4F4F2;
             --text-color: #111111;
             --text-muted: #666666;
-            --gold-accent: #D4AF37;
+            --brand-blue: #0F2027;
+            --whatsapp-green: #075E54;
             --font-heading: 'Cormorant Garamond', serif;
             --font-body: 'Inter', sans-serif;
         }
@@ -25,151 +25,176 @@
         body { background-color: var(--bg-color); color: var(--text-color); font-family: var(--font-body); -webkit-font-smoothing: antialiased; }
         a { text-decoration: none; color: inherit; }
 
+        /* Duyuru Bandı (Top Announcement Bar) */
+        .top-bar {
+            background-color: #111; color: #fff;
+            text-align: center; font-size: 0.75rem; letter-spacing: 2px;
+            padding: 8px 15px; font-weight: 500; text-transform: uppercase;
+        }
+
         /* Minimal Header */
         header { 
-            background: rgba(250, 250, 250, 0.9); 
+            background: rgba(250, 250, 250, 0.95); 
             backdrop-filter: blur(10px);
             position: sticky; top: 0; z-index: 100; 
-            padding: 20px 40px; 
+            padding: 18px 40px; 
             display: flex; justify-content: space-between; align-items: center; 
-            border-bottom: 1px solid rgba(0,0,0,0.05);
+            border-bottom: 1px solid rgba(0,0,0,0.06);
         }
-        .header-left, .header-right { display: flex; align-items: center; gap: 25px; }
+        .header-left, .header-right { display: flex; align-items: center; gap: 20px; }
         header button { background: none; border: none; font-size: 1.1rem; cursor: pointer; color: var(--text-color); position: relative; }
         
         .logo { 
             font-family: var(--font-heading);
-            font-size: 2rem; font-weight: 500; letter-spacing: 12px; 
+            font-size: 2.1rem; font-weight: 500; letter-spacing: 10px; 
             text-transform: uppercase; color: var(--text-color);
         }
         .cart-count { 
             position: absolute; top: -6px; right: -8px; background: var(--text-color); color: #fff; 
-            font-size: 0.55rem; width: 15px; height: 15px; border-radius: 50%; 
+            font-size: 0.55rem; width: 16px; height: 16px; border-radius: 50%; 
             display: flex; align-items: center; justify-content: center; font-weight: 600; 
         }
 
         /* Hero Section */
         .hero {
-            height: 85vh;
+            height: 80vh;
             display: flex; flex-direction: column; justify-content: center; align-items: center;
             text-align: center; padding: 0 20px;
-            background: linear-gradient(180deg, rgba(250,250,250,0) 0%, rgba(244,244,242,0.6) 100%),
+            background: linear-gradient(180deg, rgba(250,250,250,0) 0%, rgba(244,244,242,0.7) 100%),
                         url('https://images.unsplash.com/photo-1511499767150-a48a237f0083?q=80&w=1600') center/cover no-repeat;
-            position: relative;
         }
         .hero-title {
             font-family: var(--font-heading);
-            font-size: 3.5rem; font-weight: 400; letter-spacing: 14px; text-transform: uppercase; margin-bottom: 10px;
+            font-size: 3.2rem; font-weight: 400; letter-spacing: 12px; text-transform: uppercase; margin-bottom: 10px;
         }
         .hero-subtitle {
             font-family: var(--font-heading);
-            font-size: 1.3rem; font-style: italic; color: var(--text-muted); letter-spacing: 2px; margin-bottom: 30px;
+            font-size: 1.2rem; font-style: italic; color: var(--text-muted); letter-spacing: 3px; margin-bottom: 30px;
         }
         .hero-btn {
             background: var(--text-color); color: #fff; border: none;
-            padding: 14px 40px; font-size: 0.75rem; font-weight: 500;
+            padding: 14px 38px; font-size: 0.75rem; font-weight: 500;
             text-transform: uppercase; letter-spacing: 3px; cursor: pointer;
             transition: all 0.3s ease;
         }
         .hero-btn:hover { background: #333; transform: translateY(-2px); }
 
-        /* Section Styling */
-        .section-header { text-align: center; padding: 80px 20px 40px; }
-        .section-title { font-family: var(--font-heading); font-size: 2.2rem; font-weight: 400; letter-spacing: 6px; text-transform: uppercase; }
-
         /* Container & Grid */
-        .container { max-width: 1300px; margin: 0 auto; padding: 0 20px 80px; }
+        .container { max-width: 1250px; margin: 0 auto; padding: 60px 20px; }
+        .section-title { font-family: var(--font-heading); font-size: 2.2rem; text-align: center; letter-spacing: 6px; text-transform: uppercase; margin-bottom: 40px; }
+
         .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; }
         .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
 
-        @media (max-width: 768px) {
-            header { padding: 15px 20px; }
-            .logo { font-size: 1.4rem; letter-spacing: 6px; }
-            .hero-title { font-size: 2.2rem; letter-spacing: 6px; }
-            .grid-2, .grid-3 { grid-template-columns: 1fr; }
-        }
-
-        /* Product Card (Hover Image Effect) */
-        .product-card { cursor: pointer; }
+        /* Product Cards */
+        .product-card { cursor: pointer; text-align: center; }
         .img-wrapper { 
             position: relative; width: 100%; aspect-ratio: 1 / 1; 
             background-color: var(--card-bg); overflow: hidden; margin-bottom: 15px;
         }
-        .product-card img { 
-            width: 100%; height: 100%; object-fit: cover; 
-            transition: opacity 0.5s ease, transform 0.7s ease; 
-        }
+        .product-card img { width: 100%; height: 100%; object-fit: cover; transition: all 0.6s ease; }
         .product-card .img-secondary { position: absolute; top: 0; left: 0; opacity: 0; }
         .product-card:hover .img-primary { opacity: 0; }
         .product-card:hover .img-secondary { opacity: 1; transform: scale(1.03); }
+        .product-name { font-family: var(--font-heading); font-size: 1.2rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px; }
+        .product-price { font-size: 0.85rem; color: var(--text-muted); }
 
-        .product-info { text-align: center; }
-        .product-name { font-family: var(--font-heading); font-size: 1.2rem; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px; }
-        .product-price { font-size: 0.85rem; color: var(--text-muted); font-weight: 400; }
+        /* Rozetler / Güvenlik Hizmet Bölümü (Bilge Karga Stil) */
+        .trust-section { background-color: var(--card-bg); padding: 60px 20px; border-top: 1px solid rgba(0,0,0,0.05); border-bottom: 1px solid rgba(0,0,0,0.05); }
+        .trust-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; text-align: center; }
+        .trust-item i { font-size: 1.8rem; color: var(--text-color); margin-bottom: 12px; }
+        .trust-item h4 { font-size: 0.8rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px; }
+        .trust-item p { font-size: 0.75rem; color: var(--text-muted); }
 
-        /* Large Category Cards */
-        .category-card { position: relative; aspect-ratio: 1 / 1; overflow: hidden; background: var(--card-bg); }
-        .category-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s ease; }
-        .category-card:hover img { transform: scale(1.04); }
-        .category-overlay {
-            position: absolute; inset: 0; background: rgba(0,0,0,0.15);
-            display: flex; align-items: center; justify-content: center;
-        }
-        .category-title { color: #fff; font-family: var(--font-heading); font-size: 2rem; letter-spacing: 6px; text-transform: uppercase; }
-
-        /* Why Veliora (Features) */
-        .features { background-color: var(--card-bg); padding: 60px 20px; border-top: 1px solid rgba(0,0,0,0.03); border-bottom: 1px solid rgba(0,0,0,0.03); }
-        .features-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; text-align: center; }
-        @media (max-width: 768px) { .features-grid { grid-template-columns: repeat(2, 1fr); gap: 30px; } }
-        .feature-item i { font-size: 1.2rem; color: var(--text-color); margin-bottom: 12px; }
-        .feature-item h4 { font-size: 0.75rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 4px; }
-        .feature-item p { font-size: 0.7rem; color: var(--text-muted); }
-
-        /* Instagram Gallery Grid */
-        .insta-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; }
-        @media (max-width: 768px) { .insta-grid { grid-template-columns: repeat(3, 1fr); } }
-        .insta-item { aspect-ratio: 1 / 1; overflow: hidden; background: var(--card-bg); }
-        .insta-item img { width: 100%; height: 100%; object-fit: cover; }
+        /* E-Bülten Bölümü */
+        .newsletter { text-align: center; padding: 70px 20px; background: #fff; }
+        .newsletter h3 { font-family: var(--font-heading); font-size: 1.8rem; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 10px; }
+        .newsletter p { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 25px; }
+        .newsletter-form { display: flex; justify-content: center; gap: 10px; max-width: 450px; margin: 0 auto; }
+        .newsletter-form input { flex: 1; padding: 12px 18px; border: 1px solid #ccc; font-size: 0.85rem; outline: none; }
+        .newsletter-form button { background: var(--text-color); color: #fff; border: none; padding: 12px 25px; font-size: 0.75rem; letter-spacing: 2px; cursor: pointer; text-transform: uppercase; }
 
         /* Footer */
         footer { padding: 60px 40px 30px; background: var(--bg-color); border-top: 1px solid rgba(0,0,0,0.05); }
         .footer-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(5, 1fr); gap: 30px; font-size: 0.8rem; }
-        @media (max-width: 768px) { .footer-grid { grid-template-columns: repeat(2, 1fr); } }
         .footer-col h5 { font-family: var(--font-heading); font-size: 1rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 15px; }
         .footer-col ul { list-style: none; }
         .footer-col ul li { margin-bottom: 10px; color: var(--text-muted); cursor: pointer; }
         .footer-bottom { text-align: center; margin-top: 50px; font-size: 0.7rem; color: #aaa; letter-spacing: 1px; }
 
-        /* Floating WhatsApp Button */
-        .whatsapp-btn {
-            position: fixed; bottom: 30px; right: 30px;
-            background: #111; color: #fff; width: 50px; height: 50px; border-radius: 50%;
-            display: flex; align-items: center; justify-content: center; font-size: 1.4rem;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.15); z-index: 99; transition: all 0.3s;
+        /* Canlı WhatsApp Pop-up Widget (Mojjo Stili) */
+        .wa-widget-btn {
+            position: fixed; bottom: 25px; right: 25px;
+            background: #25D366; color: #fff; width: 55px; height: 55px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center; font-size: 1.6rem;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2); z-index: 100; cursor: pointer; transition: transform 0.3s;
         }
-        .whatsapp-btn:hover { background: #25D366; transform: scale(1.08); }
+        .wa-widget-btn:hover { transform: scale(1.08); }
 
-        /* Side Panels (Menu & Cart) */
-        .overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.3); z-index: 150; display: none; }
+        .wa-popup {
+            position: fixed; bottom: 90px; right: 25px; width: 320px; background: #fff;
+            border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.15); z-index: 101;
+            display: none; overflow: hidden; flex-direction: column;
+        }
+        .wa-popup.open { display: flex; }
+        .wa-header { background: var(--whatsapp-green); color: #fff; padding: 15px; display: flex; justify-content: space-between; align-items: center; }
+        .wa-header h4 { font-size: 0.95rem; font-weight: 500; }
+        .wa-header i { cursor: pointer; font-size: 1.1rem; }
+        .wa-body { padding: 20px; background: #E5DDD5; min-height: 120px; display: flex; align-items: flex-end; }
+        .wa-msg-bubble { background: #fff; padding: 10px 14px; border-radius: 8px; font-size: 0.85rem; color: #333; position: relative; width: 100%; box-shadow: 0 1px 2px rgba(0,0,0,0.1); }
+        .wa-footer { padding: 12px; background: #fff; border-top: 1px solid #eee; text-align: center; }
+        .wa-send-btn { background: var(--whatsapp-green); color: #fff; border: none; width: 100%; padding: 10px; border-radius: 6px; font-size: 0.85rem; font-weight: 500; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; }
+
+        /* Panels (Menu, Login, Cart) */
+        .overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 150; display: none; }
         .overlay.open { display: block; }
-        .side-panel { position: fixed; top: 0; right: -100%; width: 100%; max-width: 380px; height: 100%; background: #fff; z-index: 200; transition: right 0.4s ease; padding: 30px; display: flex; flex-direction: column; }
+        .side-panel { position: fixed; top: 0; right: -100%; width: 100%; max-width: 400px; height: 100%; background: #fff; z-index: 200; transition: right 0.4s ease; padding: 35px 30px; display: flex; flex-direction: column; overflow-y: auto; }
+        .side-panel.left-panel { right: auto; left: -100%; transition: left 0.4s ease; }
         .side-panel.open { right: 0; }
-        .panel-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; }
-        .panel-header h3 { font-family: var(--font-heading); font-size: 1.4rem; letter-spacing: 2px; text-transform: uppercase; }
-        .close-btn { background: none; border: none; font-size: 1.2rem; cursor: pointer; }
+        .side-panel.left-panel.open { left: 0; }
+        .panel-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; border-bottom: 1px solid #eee; padding-bottom: 15px; }
+        .panel-header h3 { font-family: var(--font-heading); font-size: 1.5rem; letter-spacing: 2px; text-transform: uppercase; }
+        .close-btn { background: none; border: none; font-size: 1.3rem; cursor: pointer; }
+
+        /* Categorized Side Menu (Bilge Karga / Veliora Ekran Görüntüsü) */
+        .menu-list { list-style: none; }
+        .menu-list li { border-bottom: 1px solid #f4f4f4; }
+        .menu-list a { display: flex; justify-content: space-between; padding: 14px 0; font-weight: 500; font-size: 0.85rem; letter-spacing: 1.5px; text-transform: uppercase; }
+
+        /* Login Modal Form */
+        .tab-buttons { display: flex; border-bottom: 1px solid #eee; margin-bottom: 25px; }
+        .tab-btn { flex: 1; padding: 10px; background: none; border: none; font-family: var(--font-heading); font-size: 1.1rem; cursor: pointer; border-bottom: 2px solid transparent; color: #888; }
+        .tab-btn.active { border-color: var(--text-color); color: var(--text-color); font-weight: 600; }
+        .form-group { margin-bottom: 18px; }
+        .form-group label { display: block; font-size: 0.75rem; color: #666; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 1px; }
+        .form-group input { width: 100%; padding: 12px; border: 1px solid #ddd; font-size: 0.85rem; outline: none; }
+        .btn-submit { width: 100%; padding: 13px; background: var(--text-color); color: #fff; border: none; font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; margin-top: 10px; }
+        .btn-google { width: 100%; padding: 12px; background: #fff; border: 1px solid #ddd; font-size: 0.8rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 12px; }
+
+        @media (max-width: 768px) {
+            header { padding: 15px 20px; }
+            .logo { font-size: 1.5rem; letter-spacing: 6px; }
+            .hero-title { font-size: 2.2rem; letter-spacing: 6px; }
+            .grid-2, .grid-3, .trust-grid, .footer-grid { grid-template-columns: 1fr; }
+        }
     </style>
 </head>
 <body>
 
-    <!-- Header -->
+    <div class="top-bar">
+        %50'ye varan İndirim | <a href="#bestsellers" style="text-decoration:underline;">Hemen Keşfet</a>
+    </div>
+
     <header>
         <div class="header-left">
             <button onclick="togglePanel('menu-panel', true)"><i class="fa-solid fa-bars"></i></button>
+            <button onclick="togglePanel('search-panel', true)"><i class="fa-solid fa-magnifying-glass"></i></button>
         </div>
         
         <div class="logo">Veliora</div>
         
         <div class="header-right">
+            <button onclick="togglePanel('login-panel', true)"><i class="fa-regular fa-user"></i></button>
             <button onclick="togglePanel('cart-panel', true)">
                 <i class="fa-solid fa-bag-shopping"></i>
                 <span class="cart-count">0</span>
@@ -177,107 +202,88 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
     <section class="hero">
-        <h1 class="hero-title">Veliora</h1>
+        <h1 class="hero-title">Yeni Sezon Güneş Gözlükleri</h1>
         <p class="hero-subtitle">Timeless Vision</p>
-        <button class="hero-btn" onclick="document.getElementById('bestsellers').scrollIntoView({behavior:'smooth'})">Koleksiyonu Keşfet</button>
+        <button class="hero-btn" onclick="document.getElementById('bestsellers').scrollIntoView({behavior:'smooth'})">Koleksiyonu İncele</button>
     </section>
 
-    <!-- En Çok Satanlar (Hover Görsel Özellikli) -->
     <section id="bestsellers" class="container">
-        <div class="section-header">
-            <h2 class="section-title">En Çok Satanlar</h2>
-        </div>
+        <h2 class="section-title">Çok Satanlar</h2>
         <div class="grid-2">
-            <!-- Ürün 1 -->
             <div class="product-card">
                 <div class="img-wrapper">
                     <img src="https://images.unsplash.com/photo-1511499767150-a48a237f0083?q=80&w=800" class="img-primary">
                     <img src="https://images.unsplash.com/photo-1508296695146-257a814070b4?q=80&w=800" class="img-secondary">
                 </div>
-                <div class="product-info">
-                    <h3 class="product-name">Sirius Gold</h3>
-                    <p class="product-price">890 TL</p>
-                </div>
+                <h3 class="product-name">Sirius Gold</h3>
+                <p class="product-price">890 TL</p>
             </div>
-            <!-- Ürün 2 -->
             <div class="product-card">
                 <div class="img-wrapper">
                     <img src="https://images.unsplash.com/photo-1572635196237-14b3f281503f?q=80&w=800" class="img-primary">
                     <img src="https://images.unsplash.com/photo-1591076482161-42ce6da69f67?q=80&w=800" class="img-secondary">
                 </div>
-                <div class="product-info">
-                    <h3 class="product-name">Jim Black</h3>
-                    <p class="product-price">1.150 TL</p>
-                </div>
+                <h3 class="product-name">Jim Black</h3>
+                <p class="product-price">1.150 TL</p>
             </div>
         </div>
     </section>
 
-    <!-- Büyük Kare Kategoriler -->
-    <section class="container">
-        <div class="section-header">
-            <h2 class="section-title">Kategoriler</h2>
-        </div>
-        <div class="grid-3">
-            <div class="category-card">
-                <img src="https://images.unsplash.com/photo-1591076482161-42ce6da69f67?q=80&w=800">
-                <div class="category-overlay"><h3 class="category-title">Optical</h3></div>
+    <section class="trust-section">
+        <div class="trust-grid">
+            <div class="trust-item">
+                <i class="fa-solid fa-lock"></i>
+                <h4>Güvenli Alışveriş</h4>
+                <p>256-bit SSL Koruma</p>
             </div>
-            <div class="category-card">
-                <img src="https://images.unsplash.com/photo-1511499767150-a48a237f0083?q=80&w=800">
-                <div class="category-overlay"><h3 class="category-title">Sunglasses</h3></div>
-            </div>
-            <div class="category-card">
-                <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?q=80&w=800">
-                <div class="category-overlay"><h3 class="category-title">Accessories</h3></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Neden Veliora? -->
-    <section class="features">
-        <div class="features-grid">
-            <div class="feature-item">
-                <i class="fa-solid fa-gem"></i>
-                <h4>Premium Kalite</h4>
-                <p>İtalyan asetat ve titanyum işçilik</p>
-            </div>
-            <div class="feature-item">
-                <i class="fa-solid fa-shield-halved"></i>
-                <h4>Güvenli Ödeme</h4>
-                <p>256-bit SSL koruması</p>
-            </div>
-            <div class="feature-item">
-                <i class="fa-solid fa-truck-fast"></i>
-                <h4>Hızlı Kargo</h4>
-                <p>Aynı gün kargo imkanı</p>
-            </div>
-            <div class="feature-item">
-                <i class="fa-solid fa-rotate-left"></i>
+            <div class="trust-item">
+                <i class="fa-solid fa-arrow-rotate-left"></i>
                 <h4>Kolay İade</h4>
-                <p>14 gün koşulsuz iade hakkı</p>
+                <p>14 Gün İade Hakkı</p>
+            </div>
+            <div class="trust-item">
+                <i class="fa-solid fa-truck-fast"></i>
+                <h4>Hızlı Gönderim</h4>
+                <p>Aynı Gün Kargo</p>
+            </div>
+            <div class="trust-item">
+                <i class="fa-solid fa-credit-card"></i>
+                <h4>Taksitli Ödeme</h4>
+                <p>Tüm Kartlara Taksit</p>
+            </div>
+            <div class="trust-item">
+                <i class="fa-solid fa-box-open"></i>
+                <h4>Şık Paketleme</h4>
+                <p>Özel Kutusuyla</p>
+            </div>
+            <div class="trust-item">
+                <i class="fa-solid fa-gem"></i>
+                <h4>Kaliteli Ürün</h4>
+                <p>İtalyan Asetat Çerçeve</p>
+            </div>
+            <div class="trust-item">
+                <i class="fa-solid fa-leaf"></i>
+                <h4>Sürdürülebilir</h4>
+                <p>Çevre Dostu Malzeme</p>
+            </div>
+            <div class="trust-item">
+                <i class="fa-solid fa-glasses"></i>
+                <h4>Geniş Çeşitlilik</h4>
+                <p>Yüzlerce Model</p>
             </div>
         </div>
     </section>
 
-    <!-- Instagram Bölümü -->
-    <section class="container" style="padding-top: 80px;">
-        <div class="section-header">
-            <h2 class="section-title">@velioratr</h2>
-        </div>
-        <div class="insta-grid">
-            <div class="insta-item"><img src="https://images.unsplash.com/photo-1511499767150-a48a237f0083?q=80&w=400"></div>
-            <div class="insta-item"><img src="https://images.unsplash.com/photo-1572635196237-14b3f281503f?q=80&w=400"></div>
-            <div class="insta-item"><img src="https://images.unsplash.com/photo-1591076482161-42ce6da69f67?q=80&w=400"></div>
-            <div class="insta-item"><img src="https://images.unsplash.com/photo-1508296695146-257a814070b4?q=80&w=400"></div>
-            <div class="insta-item"><img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?q=80&w=400"></div>
-            <div class="insta-item"><img src="https://images.unsplash.com/photo-1511499767150-a48a237f0083?q=80&w=400"></div>
+    <section class="newsletter">
+        <h3>E-Bültene Katılın</h3>
+        <p>Yeni koleksiyonlar ve özel indirimlerden ilk siz haberdar olun.</p>
+        <div class="newsletter-form">
+            <input type="email" placeholder="E-posta adresiniz...">
+            <button>Abone Ol</button>
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <div class="footer-grid">
             <div class="footer-col">
@@ -289,12 +295,15 @@
                 <ul><li>Teslimat Süreci</li><li>İade Koşulları</li></ul>
             </div>
             <div class="footer-col">
-                <h5>Gözlük</h5>
-                <ul><li>Güneş Gözlüğü</li><li>Optik</li></ul>
+                <h5>Kategoriler</h5>
+                <ul><li>Güneş Gözlüğü</li><li>Optik</li><li>Saat</li></ul>
             </div>
             <div class="footer-col">
                 <h5>İletişim</h5>
-                <ul><li>WhatsApp</li><li>E-posta</li></ul>
+                <ul>
+                    <li><i class="fa-brands fa-whatsapp"></i> 0543 551 65 65</li>
+                    <li><i class="fa-regular fa-envelope"></i> veliora4b@gmail.com</li>
+                </ul>
             </div>
             <div class="footer-col">
                 <h5>Sosyal</h5>
@@ -304,34 +313,79 @@
         <div class="footer-bottom">&copy; 2026 VELIORA. Tüm hakları saklıdır.</div>
     </footer>
 
-    <!-- WhatsApp Floating Button -->
-    <a href="https://wa.me/905435516565" target="_blank" class="whatsapp-btn">
+    <div class="wa-widget-btn" onclick="toggleWhatsAppPopup()">
         <i class="fa-brands fa-whatsapp"></i>
-    </a>
+    </div>
 
-    <!-- Overlay & Side Panels -->
-    <div class="overlay" id="overlay" onclick="closePanels()"></div>
+    <div class="wa-popup" id="wa-popup">
+        <div class="wa-header">
+            <h4>Veliora Müşteri Hizmetleri</h4>
+            <i class="fa-solid fa-xmark" onclick="toggleWhatsAppPopup()"></i>
+        </div>
+        <div class="wa-body">
+            <div class="wa-msg-bubble">
+                Merhaba! Nasıl yardımcı olabilirim?
+            </div>
+        </div>
+        <div class="wa-footer">
+            <button class="wa-send-btn" onclick="window.open('https://wa.me/905435516565?text=Merhaba,%20bilgi%20alabilir%20miyim%20?', '_blank')">
+                <i class="fa-brands fa-whatsapp"></i> Merhaba bilgi alabilir miyim ?
+            </button>
+        </div>
+    </div>
 
-    <div class="side-panel" id="menu-panel">
+    <div class="overlay" id="overlay" onclick="closeAllPanels()"></div>
+
+    <div class="side-panel left-panel" id="menu-panel">
         <div class="panel-header">
             <h3>Menü</h3>
-            <button class="close-btn" onclick="closePanels()"><i class="fa-solid fa-xmark"></i></button>
+            <button class="close-btn" onclick="closeAllPanels()"><i class="fa-solid fa-xmark"></i></button>
         </div>
-        <ul style="list-style:none; line-height:2.5; font-family:var(--font-heading); font-size:1.3rem; text-transform:uppercase;">
-            <li>Ana Sayfa</li>
-            <li>Gözlük</li>
-            <li>Güneş Gözlüğü</li>
-            <li>Aksesuar</li>
-            <li>Yeni Gelenler</li>
-            <li>Hakkımızda</li>
-            <li>İletişim</li>
+        <ul class="menu-list">
+            <li><a href="#">KADIN <i class="fa-solid fa-chevron-right"></i></a></li>
+            <li><a href="#">ERKEK <i class="fa-solid fa-chevron-right"></i></a></li>
+            <li><a href="#">SAAT <i class="fa-solid fa-plus"></i></a></li>
+            <li><a href="#">BLUE BLOCK</a></li>
+            <li><a href="#">PREMİUM ÇERÇEVELER</a></li>
+            <li><a href="#">ÇOCUK</a></li>
+            <li><a href="#">KOLEKSİYONLAR <i class="fa-solid fa-chevron-right"></i></a></li>
+            <li><a href="#">GÖZLÜK KILIFI</a></li>
+            <li><a href="#">PROMOSYON</a></li>
+            <li><a href="#">ÜRÜN ANALİZ RAPORLARI</a></li>
+            <li><a href="#">ONLİNE DENE</a></li>
         </ul>
+    </div>
+
+    <div class="side-panel" id="login-panel">
+        <div class="panel-header">
+            <h3>Hesabım</h3>
+            <button class="close-btn" onclick="closeAllPanels()"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="tab-buttons">
+            <button class="tab-btn active">Giriş Yap</button>
+            <button class="tab-btn">Üye Ol</button>
+        </div>
+        <div class="form-group">
+            <label>E-POSTA</label>
+            <input type="email" placeholder="E-posta adresiniz">
+        </div>
+        <div class="form-group">
+            <label>ŞİFRE</label>
+            <input type="password" placeholder="Şifreniz">
+        </div>
+        <div style="text-align:right; margin-bottom:15px;">
+            <a href="#" style="font-size:0.75rem; color:#777; text-decoration:underline;">Şifremi Unuttum</a>
+        </div>
+        <button class="btn-submit">GİRİŞ YAP</button>
+        <button class="btn-google">
+            <i class="fa-brands fa-google"></i> Google İle Bağlan
+        </button>
     </div>
 
     <div class="side-panel" id="cart-panel">
         <div class="panel-header">
             <h3>Sepetim</h3>
-            <button class="close-btn" onclick="closePanels()"><i class="fa-solid fa-xmark"></i></button>
+            <button class="close-btn" onclick="closeAllPanels()"><i class="fa-solid fa-xmark"></i></button>
         </div>
         <p style="color:var(--text-muted); font-size:0.85rem;">Sepetiniz henüz boş.</p>
     </div>
@@ -341,7 +395,12 @@
             document.getElementById(id).classList.toggle('open', open);
             document.getElementById('overlay').classList.toggle('open', open);
         }
-        function closePanels() {
+
+        function toggleWhatsAppPopup() {
+            document.getElementById('wa-popup').classList.toggle('open');
+        }
+
+        function closeAllPanels() {
             document.querySelectorAll('.side-panel').forEach(p => p.classList.remove('open'));
             document.getElementById('overlay').classList.remove('open');
         }
